@@ -1,0 +1,9 @@
+/* 
+    Created on : Jul 23, 2016, 7:37:23 AM
+    Author     : Thambaru Wijesekara <howdy@thambaru.com>
+*/
+
+textarea{
+    width: 100%;
+    min-height: 300px;
+}
