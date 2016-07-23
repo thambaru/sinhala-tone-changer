@@ -10,3 +10,6 @@ textarea{
 .breath-space{
     padding: 10px 0px;
 }
+.translator{
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 /* global strictToNormalLib, normalToStrictLib */
 
-String.prototype.tnwReplaceText = function (lib) {
+String.prototype.twReplaceText = function (lib) {
     var replaceString = this;
     var regex;
     for (var key in lib) {
@@ -11,17 +11,19 @@ String.prototype.tnwReplaceText = function (lib) {
 };
 
 jQuery(function ($) {
+
     $('textarea').keydown(function (e) {
 	if ((e.ctrlKey || e.metaKey) && (e.keyCode == 13 || e.keyCode == 10))
 	    $('#convert-btn').trigger('click');
     });
+
     $('#convert-btn').click(function () {
 	var text = $('textarea').val(),
 		radio = $('#strictToNormal-radio');
 	if (radio.is(':checked')) {
-	    $('textarea').val(text.tnwReplaceText(strictToNormalLib));
+	    $('textarea').val(text.twReplaceText(strictToNormalLib));
 	} else {
-	    $('textarea').val(text.tnwReplaceText(normalToStrictLib));
+	    $('textarea').val(text.twReplaceText(normalToStrictLib));
 	}
     });
 });
