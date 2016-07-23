@@ -11,6 +11,11 @@ String.prototype.twReplaceText = function (lib) {
 };
 
 jQuery(function ($) {
+    var libs = {strictToNormalLib: {}, normalToStrictLib: {}};
+    
+    $.ajax({url: 'lib/library.json', success: function (data) {
+	    libs = data;
+	}});
 
     $('textarea').keydown(function (e) {
 	if ((e.ctrlKey || e.metaKey) && (e.keyCode == 13 || e.keyCode == 10))
@@ -25,10 +30,9 @@ jQuery(function ($) {
 	var text = $('textarea').val(),
 		radio = $('#strictToNormal-radio');
 	if (radio.is(':checked')) {
-	    $('textarea').val(text.twReplaceText(strictToNormalLib));
+	    $('textarea').val(text.twReplaceText(libs.strictToNormalLib));
 	} else {
-	    $('textarea').val(text.twReplaceText(normalToStrictLib));
+	    $('textarea').val(text.twReplaceText(libs.normalToStrictLib));
 	}
     });
 });
-

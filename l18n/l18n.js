@@ -15,6 +15,7 @@ $(function () {
 	}
     }
 
+
     $('.trn').each(function () {
 	var str = $(this).text() ? $(this).text() : $(this).val();
 	$(this).attr('data-tr-key', str);
@@ -25,9 +26,11 @@ $(function () {
     });
 
     function translateTo(langCode) {
+	setCookie('lang', langCode);
+
 	$('.trn').each(function () {
 	    var $this = $(this),
-	    key = $this.attr('data-tr-key');
+		    key = $this.attr('data-tr-key');
 
 	    if (dictionary.hasOwnProperty(key)) {
 		var str = dictionary[$this.attr('data-tr-key')].hasOwnProperty(langCode) ? dictionary[key][langCode] : key;
@@ -35,7 +38,26 @@ $(function () {
 	    }
 	});
     }
+
+    var lastSetLang = getCookie('lang');
+    if (lastSetLang != "")
+	translateTo(lastSetLang);
 });
 
-
-
+function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + "; ";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+	var c = ca[i];
+	while (c.charAt(0) == ' ') {
+	    c = c.substring(1);
+	}
+	if (c.indexOf(name) == 0) {
+	    return c.substring(name.length, c.length);
+	}
+    }
+    return "";
+}
