@@ -5,7 +5,9 @@
 
 textarea{
     width: 100%;
-    min-height: 300px;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
 }
 .breath-space{
     padding: 10px 0px;
