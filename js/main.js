@@ -17,6 +17,10 @@ jQuery(function ($) {
 	    $('#convert-btn').trigger('click');
     }).focus();
 
+    $('[name="way"]').click(function () {
+	$('#convert-btn').trigger('click');
+    });
+
     $('#convert-btn').click(function () {
 	var text = $('textarea').val(),
 		radio = $('#strictToNormal-radio');
